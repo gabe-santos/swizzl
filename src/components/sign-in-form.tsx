@@ -2,9 +2,8 @@ import { revalidate, signInWithPassword } from "@/lib/actions/auth";
 import NextLink from "next/link";
 import { Button, Input, Link } from "@nextui-org/react";
 import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
 
-export default function SignInForm({ onClose }) {
+export default function SignInForm({ onClose }: { onClose: () => void }) {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>("");
 

@@ -3,7 +3,7 @@ import NextLink from "next/link";
 import { Button, Input, Link } from "@nextui-org/react";
 import { useTransition, useState } from "react";
 
-export default function SignUpForm({ onClose }) {
+export default function SignUpForm({ onClose }: { onClose: () => void }) {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>("");
 
