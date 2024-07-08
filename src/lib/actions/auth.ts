@@ -14,9 +14,10 @@ export async function signInWithPassword(
   const email = formData.get("email");
   const password = formData.get("password");
 
+  //TODO form validation
   const { data, error } = await supabase.auth.signInWithPassword({
-    email: email,
-    password: password,
+    email: email!.toString(),
+    password: password!.toString(),
   });
 
   if (error) {
@@ -35,8 +36,8 @@ export async function signUpNewUser(formData: FormData) {
   const password = formData.get("password");
 
   const { data, error } = await supabase.auth.signUp({
-    email: email,
-    password: password,
+    email: email!.toString(),
+    password: password!.toString(),
     options: {
       data: {
         first_name: name,
@@ -47,6 +48,7 @@ export async function signUpNewUser(formData: FormData) {
   if (error) {
     return { error: error.message };
   }
+  console.log("successfully signed up", data.user?.email);
   return { success: true };
 }
 
