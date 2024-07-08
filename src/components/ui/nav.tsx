@@ -1,8 +1,8 @@
 import { Navbar, NavbarBrand, NavbarItem } from '@nextui-org/navbar';
 import SearchBar from './search-bar';
-import RandomDrinkBtn from './random-drink-btn';
+import RandomDrinkBtn from '../buttons/random-drink-btn';
 import Link from 'next/link';
-import SignInBtn from './sign-in-btn';
+import SignInBtn from '../buttons/sign-in-btn';
 import UserDropdown from './user-dropdown';
 import { getUser } from '@/lib/actions/auth';
 

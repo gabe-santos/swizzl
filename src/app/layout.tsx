@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { Fraunces } from 'next/font/google';
 import './globals.css';
-import Nav from '@/components/nav';
-import SearchBar from '@/components/search-bar';
-import RandomDrinkBtn from '@/components/random-drink-btn';
 import { Providers } from './providers';
 import clsx from 'clsx';
+import RandomDrinkBtn from '@/components/buttons/random-drink-btn';
+import Nav from '@/components/ui/nav';
+import SearchBar from '@/components/ui/search-bar';
 
 const fraunces = Fraunces({ subsets: ['latin'] });
 
