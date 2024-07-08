@@ -49,7 +49,7 @@ export default function SignInBtn() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="text-xl">Let's Get Mixin'</ModalHeader>
+              <ModalHeader className="text-xl">Let's Get Mixing</ModalHeader>
               <ModalBody>
                 <Tabs>
                   <Tab key="signin" title="Sign In">
