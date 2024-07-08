@@ -2,30 +2,7 @@ import FavoriteBtn from "@/components/favorite-btn";
 import { getDrinkById } from "@/lib/queries/drinks";
 import { DrinkData } from "@/types/drink";
 import { Chip, Image } from "@nextui-org/react";
-
-export interface IngredientMeasure {
-  ingredient: string;
-  measure: string;
-}
-
-export function extractIngredientsAndMeasurements(
-  drinkData: DrinkData,
-): IngredientMeasure[] {
-  const ingredients: IngredientMeasure[] = [];
-
-  for (let i = 1; i <= 15; i++) {
-    const ingredientKey = `strIngredient${i}` as keyof DrinkData;
-    const measureKey = `strMeasure${i}` as keyof DrinkData;
-
-    const ingredient = drinkData[ingredientKey];
-    if (ingredient) {
-      const measure = (drinkData[measureKey] || "").trim();
-      ingredients.push({ ingredient, measure });
-    }
-  }
-
-  return ingredients;
-}
+import { extractIngredientsAndMeasurements } from "@/utils/drink";
 
 export default async function DrinkPage({
   params,
