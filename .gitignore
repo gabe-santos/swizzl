@@ -35,5 +35,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-code_context.txt
-get_code_context.sh
+./src/code_context.txt
+./src/get_code_context.sh
