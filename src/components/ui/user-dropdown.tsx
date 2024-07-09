@@ -1,39 +1,50 @@
-"use client";
-import { revalidate, signOutUser } from "@/lib/actions/auth";
+'use client';
+import { revalidate, signOutUser } from '@/lib/actions/auth';
 import {
-  Avatar,
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-} from "@nextui-org/react";
+	Avatar,
+	Dropdown,
+	DropdownTrigger,
+	DropdownMenu,
+	DropdownItem,
+} from '@nextui-org/react';
+import { useRouter } from 'next/navigation';
+import { useTransition } from 'react';
 
 export default function UserDropdown({ name }: { name: string }) {
-  const handleSubmit = async () => {
-    const { error } = await signOutUser();
-    if (error) console.log("error signing out");
-    else {
-      await revalidate();
-    }
-  };
+	const [isPending, startTransition] = useTransition();
+	const router = useRouter();
 
-  return (
-    <Dropdown placement="bottom-start">
-      <DropdownTrigger>
-        <div className="flex gap-2 font-medium items-center hover:cursor-pointer">
-          {name}
-          <Avatar radius="full" />
-        </div>
-      </DropdownTrigger>
+	const handleSubmit = async () => {
+		const { error } = await signOutUser();
 
-      <DropdownMenu>
-        <DropdownItem key="favorites">Favorites</DropdownItem>
-        <DropdownItem key="signout" color="danger">
-          <button onClick={handleSubmit} type="submit">
-            Sign out
-          </button>
-        </DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
-  );
+		startTransition(async () => {
+			if (error) console.log('error signing out');
+			else {
+				revalidate();
+				router.refresh();
+			}
+		});
+	};
+
+	return (
+		<Dropdown placement='bottom-start'>
+			<DropdownTrigger>
+				<div className='flex gap-2 font-medium items-center hover:cursor-pointer'>
+					{name}
+					<Avatar radius='full' />
+				</div>
+			</DropdownTrigger>
+
+			<DropdownMenu>
+				<DropdownItem key='favorites'>Favorites</DropdownItem>
+				<DropdownItem key='signout' color='danger'>
+					<div>
+						<button onClick={handleSubmit} type='submit'>
+							Sign out
+						</button>
+					</div>
+				</DropdownItem>
+			</DropdownMenu>
+		</Dropdown>
+	);
 }

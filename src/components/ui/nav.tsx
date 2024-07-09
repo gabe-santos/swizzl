@@ -5,6 +5,7 @@ import Link from 'next/link';
 import SignInBtn from '../buttons/sign-in-btn';
 import UserDropdown from './user-dropdown';
 import { getUser } from '@/lib/actions/auth';
+import { Button } from '@nextui-org/react';
 
 export default async function Nav({ children }: { children: React.ReactNode }) {
 	const user = await getUser();
@@ -29,7 +30,9 @@ export default async function Nav({ children }: { children: React.ReactNode }) {
 				{user ? (
 					<UserDropdown name={user.user_metadata.first_name} />
 				) : (
-					<SignInBtn />
+					<Button as={Link} href='/signin' variant='light' size='lg'>
+						Sign In
+					</Button>
 				)}
 			</NavbarItem>
 		</Navbar>
