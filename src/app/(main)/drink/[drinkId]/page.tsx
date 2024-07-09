@@ -16,17 +16,16 @@ export default async function DrinkPage({
 	const ingredients = extractIngredientsAndMeasurements(drinkData);
 
 	return (
-		<div className='flex  gap-8'>
-			<div className='flex-1'>
+		<div className='flex w-full h-full gap-12'>
+			<div className='w-full'>
 				<Image
 					src={drinkData.strDrinkThumb}
 					alt={drinkData.strDrink}
-					width={800}
-					height={800}
+					// className='object-cover'
 				/>
 			</div>
 
-			<div className='flex flex-1 flex-col items-start justify-between px-8'>
+			<div className='flex w-full flex-col items-start justify-between px-10 '>
 				<div className='flex flex-col gap-4'>
 					<h1 className='text-4xl font-medium'>
 						{drinkData.strDrink}

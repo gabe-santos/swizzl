@@ -21,18 +21,8 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body
-				className={clsx(
-					fraunces.className,
-					'flex flex-col items-center w-full font-light'
-				)}>
-				<Nav>
-					<SearchBar />
-					<RandomDrinkBtn />
-				</Nav>
-				<div className='w-full flex flex-col max-w-screen-xl items-center px-6'>
-					<Providers>{children}</Providers>
-				</div>
+			<body className={clsx(fraunces.className, 'font-light')}>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);
