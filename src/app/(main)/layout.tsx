@@ -14,7 +14,7 @@ export default function MainLayout({
 				<RandomDrinkBtn />
 			</Nav>
 			<main className='flex flex-col items-center'>
-				<div className='max-w-screen-lg min-h-screen w-full'>
+				<div className='max-w-screen-xl px-8 min-h-screen w-full'>
 					{children}
 				</div>
 			</main>

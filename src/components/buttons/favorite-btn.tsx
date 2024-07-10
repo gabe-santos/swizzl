@@ -1,39 +1,53 @@
-'use client';
+"use client";
 
-import { Button } from '@nextui-org/react';
-import { Heart } from 'lucide-react';
-import { addToFavorites } from '@/lib/actions/favorites';
-import { useTransition } from 'react';
-import { useRouter } from 'next/navigation';
+import { Button } from "@nextui-org/react";
+import { Heart } from "lucide-react";
+import { addToFavorites, checkFavoriteStatus } from "@/lib/actions/favorites";
+import { useEffect, useState, useTransition } from "react";
+import { useRouter } from "next/navigation";
 
 export default function FavoriteBtn({ drinkId }: { drinkId: string }) {
-	const [isPending, startTransition] = useTransition();
-	const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const [isFavorited, setIsFavorited] = useState(false);
+  const router = useRouter();
 
-	const handleSubmit = async (e: any) => {
-		startTransition(async () => {
-			const result = await addToFavorites(drinkId);
+  useEffect(() => {
+    const checkStatus = async () => {
+      const result = await checkFavoriteStatus(drinkId);
+      if (result.isFavorited) {
+        setIsFavorited(result.isFavorited);
+      }
+    };
+    checkStatus();
+  }, [drinkId]);
 
-			if (result.error) {
-				// Handle error (e.g., show a toast notification)
-				console.error(result.error);
-			} else {
-				// Handle success (e.g., show a success message)
-				console.log('Added to favorites');
-				router.refresh(); // Refresh the page to reflect the new favorite status
-			}
-		});
-	};
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    startTransition(async () => {
+      const result = await addToFavorites(drinkId);
 
-	return (
-		<form onSubmit={handleSubmit}>
-			<Button
-				type='submit'
-				variant='flat'
-				startContent={<Heart color='#ef4444' />}
-				isLoading={isPending}>
-				{isPending ? 'Adding...' : 'Add to Favorites'}
-			</Button>
-		</form>
-	);
+      if (result.error) {
+        console.error(result.error);
+      } else {
+        setIsFavorited(!isFavorited);
+        console.log("Added to favorites");
+        router.refresh();
+      }
+    });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Button
+        type="submit"
+        variant="flat"
+        startContent={
+          <Heart color="#ef4444" fill={isFavorited ? "#ef4444" : "none"} />
+        }
+        isLoading={isPending}
+      >
+        {isFavorited ? "Remove from Favorites" : "Add to Favorites"}
+      </Button>
+    </form>
+  );
 }
