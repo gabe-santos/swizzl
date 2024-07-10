@@ -1,7 +1,12 @@
 import DrinksGrid from "@/components/drinks/drinks-grid";
+import { getUser } from "@/lib/actions/auth";
 import { getFavoriteDrinks } from "@/lib/queries/favorites";
+import { redirect } from "next/navigation";
 
 export default async function FavoritesPages() {
+  const user = await getUser();
+  if (!user) redirect("/");
+
   const { favoriteDrinks, error } = await getFavoriteDrinks();
   if (error) {
     return "Error";
