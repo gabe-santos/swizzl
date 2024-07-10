@@ -1,4 +1,5 @@
 export type DrinkData = {
+  idDrink: string;
   strDrink: string;
   strInstructions: string;
   strTags: null | string;

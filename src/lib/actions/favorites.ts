@@ -51,7 +51,7 @@ export async function addToFavorites(drinkId: string) {
     }
   }
 
-  revalidatePath("/drink/[drinkId]");
+  revalidatePath("/drink/[drinkId]", "page");
   return { success: true, isFavorited: !existingFavorite };
 }
 

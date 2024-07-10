@@ -1,5 +1,6 @@
 "use server";
 
+import { DrinkData } from "@/types/drink";
 import { redirect } from "next/navigation";
 
 export async function getDrinks(query: string) {
@@ -14,7 +15,7 @@ export async function getDrinks(query: string) {
   return res.json();
 }
 
-export async function getDrinkById(id: string) {
+export async function getDrinkById(id: string): Promise<DrinkData> {
   const res = await fetch(
     `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
   );
