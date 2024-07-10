@@ -13,7 +13,7 @@ export default async function FavoritesPages() {
 
   return (
     <main className="flex flex-col gap-8 justify-between">
-      <h1 className="text-2xl font-medium">Favorite</h1>
+      <h1 className="text-3xl font-medium">Favorites</h1>
       <DrinksGrid drinks={favoriteDrinks} />
     </main>
   );
