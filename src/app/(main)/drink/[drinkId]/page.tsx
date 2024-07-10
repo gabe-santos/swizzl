@@ -30,7 +30,7 @@ export default async function DrinkPage({
 					<h1 className='text-4xl font-medium'>
 						{drinkData.strDrink}
 					</h1>
-					<FavoriteBtn />
+					<FavoriteBtn drinkId={params.drinkId} />
 					<p>{drinkData.strInstructions}</p>
 					<ul>
 						{ingredients.map(({ ingredient, measure }, index) => (
