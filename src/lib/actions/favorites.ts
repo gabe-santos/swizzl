@@ -3,6 +3,14 @@ import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 
+type FavoriteStatusResult =
+  | {
+      isFavorited: boolean;
+    }
+  | {
+      error: string;
+    };
+
 export async function addToFavorites(drinkId: string) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
@@ -55,7 +63,9 @@ export async function addToFavorites(drinkId: string) {
   return { success: true, isFavorited: !existingFavorite };
 }
 
-export async function checkFavoriteStatus(drinkId: string) {
+export async function checkFavoriteStatus(
+  drinkId: string,
+): Promise<FavoriteStatusResult> {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 
