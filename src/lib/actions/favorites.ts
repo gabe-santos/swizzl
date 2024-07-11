@@ -63,9 +63,7 @@ export async function addToFavorites(drinkId: string) {
   return { success: true, isFavorited: !existingFavorite };
 }
 
-export async function checkFavoriteStatus(
-  drinkId: string,
-): Promise<FavoriteStatusResult> {
+export async function checkFavoriteStatus(drinkId: string) {
   const cookieStore = cookies();
   const supabase = createClient(cookieStore);
 

@@ -24,8 +24,8 @@ export default function FavoriteBtn({ drinkId }: { drinkId: string }) {
 
         if (data.user) {
           const result = await checkFavoriteStatus(drinkId);
-          if (result && typeof result.isFavorited === "boolean") {
-            setIsFavorited(result.isFavorited);
+          if ("isFavorited" in result) {
+            setIsFavorited(!!result.isFavorited);
           }
         }
       } catch (error) {
