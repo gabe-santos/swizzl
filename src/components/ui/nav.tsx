@@ -31,7 +31,12 @@ export default async function Nav({ children }: { children: React.ReactNode }) {
       <NavbarContent justify="center" className="w-full">
         <NavbarBrand className="flex-grow-0">
           <>
-            <Link href="/" className="text-3xl font-medium md:inline hidden">
+            <Link
+              as={NextLink}
+              color="foreground"
+              href="/"
+              className="text-3xl font-medium md:inline hidden"
+            >
               swizzl🍹
             </Link>
             <NavbarMenuToggle className="md:hidden text-3xl" icon="🍹" />
