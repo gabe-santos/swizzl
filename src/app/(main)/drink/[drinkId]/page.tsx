@@ -16,7 +16,7 @@ export default async function DrinkPage({
   const ingredients = extractIngredientsAndMeasurements(drinkData);
 
   return (
-    <div className="flex w-full h-full gap-0">
+    <div className="flex w-full flex-col sm:flex-row gap-8 h-full">
       <div className="w-full">
         <Image
           src={drinkData.strDrinkThumb}
@@ -25,7 +25,7 @@ export default async function DrinkPage({
         />
       </div>
 
-      <div className="flex w-full flex-col items-start justify-between px-10 ">
+      <div className="flex w-full flex-col md:px-8 items-start justify-between">
         <div className="flex flex-col gap-4">
           <h1 className="text-4xl font-medium">{drinkData.strDrink}</h1>
           <FavoriteBtn drinkId={params.drinkId} />

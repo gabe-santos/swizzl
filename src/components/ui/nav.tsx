@@ -15,6 +15,7 @@ import { Button, Link } from "@nextui-org/react";
 const menuItems = [
   { title: "Home", route: "/" },
   { title: "Sign in / Sign up", route: "/signin" },
+  { title: "Favorites", route: "/favorites" },
 ];
 
 export default async function Nav({ children }: { children: React.ReactNode }) {
@@ -25,9 +26,9 @@ export default async function Nav({ children }: { children: React.ReactNode }) {
       shouldHideOnScroll
       isBlurred={false}
       maxWidth="full"
-      className="mt-4 mb-6"
+      className="mt-4 mb-6 "
     >
-      <NavbarContent>
+      <NavbarContent justify="center" className="w-full">
         <NavbarBrand className="flex-grow-0">
           <>
             <Link href="/" className="text-3xl font-medium md:inline hidden">
@@ -38,7 +39,7 @@ export default async function Nav({ children }: { children: React.ReactNode }) {
         </NavbarBrand>
 
         {/* Hidden on smaller screens */}
-        <NavbarItem className="flex-grow gap-1 flex justify-center max-w-screen-lg">
+        <NavbarItem className="flex-grow flex-1 gap-1 flex justify-center max-w-screen-lg">
           {children}
         </NavbarItem>
 
