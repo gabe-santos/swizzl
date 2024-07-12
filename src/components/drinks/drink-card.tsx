@@ -11,16 +11,12 @@ export default function DrinkCard({
   src: string;
 }) {
   return (
-    <Card as={NextLink} href={`/drinks/${id}`} className="w-full">
-      <CardBody className="p-0">
-        <Image
-          src={src}
-          alt={title}
-          className="w-full aspect-square object-cover"
-        />
+    <Card as={NextLink} scroll href={`/drinks/${id}`} className="w-full h-full">
+      <CardBody className="p-0 aspect-square">
+        <Image src={src} alt={title} className="w-full h-full object-cover" />
       </CardBody>
-      <CardFooter className="justify-center">
-        <p className=" font-regular text-center">{title}</p>
+      <CardFooter className="justify-center p-4">
+        <p className="font-regular text-center truncate">{title}</p>
       </CardFooter>
     </Card>
   );

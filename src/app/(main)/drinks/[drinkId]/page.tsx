@@ -16,7 +16,7 @@ export default async function DrinkPage({
   const ingredients = extractIngredientsAndMeasurements(drinkData);
 
   return (
-    <div className="flex w-full flex-col sm:flex-row gap-8 h-full">
+    <div className="flex w-full flex-col sm:flex-row gap-8">
       <div className="w-full">
         <Image
           src={drinkData.strDrinkThumb}

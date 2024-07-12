@@ -27,6 +27,21 @@ export async function getDrinkById(id: string): Promise<DrinkData> {
   return data.drinks[0];
 }
 
+export async function getDrinksByIngredient(
+  ingredient: string,
+): Promise<DrinkData[]> {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/filter.php?i=${ingredient}`,
+  );
+
+  if (!res.ok) {
+    throw new Error("failed to fetch drinks by ingredient");
+  }
+
+  const { drinks } = await res.json();
+  return drinks;
+}
+
 export async function getMultipleDrinksById(ids: string[]) {
   const drinks: DrinkData[] = [];
 
