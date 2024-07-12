@@ -1,7 +1,7 @@
 import { DrinkData } from "@/types/drink";
 import { redirect } from "next/navigation";
 
-export async function getDrinks(query: string) {
+export async function getDrinks(query: string): Promise<DrinkData[]> {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/search.php?s=${query}`,
   );
@@ -10,7 +10,8 @@ export async function getDrinks(query: string) {
     throw new Error("failed to fetch data");
   }
 
-  return res.json();
+  const { drinks } = await res.json();
+  return drinks;
 }
 
 export async function getDrinkById(id: string): Promise<DrinkData> {

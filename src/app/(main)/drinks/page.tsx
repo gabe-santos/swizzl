@@ -9,8 +9,7 @@ export default async function DrinksPage({
   searchParams?: { query?: string };
 }) {
   const query = searchParams?.query || "";
-  const res = await getDrinks(query);
-  const drinks = res.drinks;
+  const drinks = await getDrinks(query);
 
   return (
     <>
