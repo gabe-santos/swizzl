@@ -1,4 +1,3 @@
-"use server";
 import { DrinkData } from "@/types/drink";
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";

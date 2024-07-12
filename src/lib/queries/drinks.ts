@@ -1,5 +1,3 @@
-"use server";
-
 import { DrinkData } from "@/types/drink";
 import { redirect } from "next/navigation";
 
@@ -26,6 +24,30 @@ export async function getDrinkById(id: string): Promise<DrinkData> {
 
   const data = await res.json();
   return data.drinks[0];
+}
+
+export async function getMultipleDrinksById(ids: string[]) {
+  const drinks: DrinkData[] = [];
+
+  for (const id of ids) {
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/lookup.php?i=${id}`,
+      );
+      if (!res.ok) {
+        console.error(`Failed to fetch drink with id ${id}`);
+        continue;
+      }
+      const data = await res.json();
+      if (data.drinks && data.drinks.length > 0) {
+        drinks.push(data.drinks[0]);
+      }
+    } catch (error) {
+      console.error(`Error fetching drink with id ${id}:`, error);
+    }
+  }
+
+  return drinks;
 }
 
 export async function getRandomDrink() {

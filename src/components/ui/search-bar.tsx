@@ -11,7 +11,7 @@ export default function SearchBar() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/?query=${encodeURIComponent(query)}`);
+    router.push(`/drinks/?query=${encodeURIComponent(query)}`);
   };
 
   return (

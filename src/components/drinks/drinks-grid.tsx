@@ -33,7 +33,7 @@ const DrinkCard = ({
   src: string;
 }) => {
   return (
-    <Card as={Link} href={`/drink/${id}`} className="w-fit">
+    <Card as={Link} href={`/drinks/${id}`} className="w-fit">
       <Image
         as={NextImage}
         className="hover:scale-105 transition-transform duration-500 ease-in-out"
