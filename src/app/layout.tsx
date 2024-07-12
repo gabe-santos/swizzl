@@ -3,9 +3,6 @@ import { Fraunces } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import clsx from "clsx";
-import RandomDrinkBtn from "@/components/buttons/random-drink-btn";
-import Nav from "@/components/ui/nav";
-import SearchBar from "@/components/ui/search-bar";
 
 const fraunces = Fraunces({ subsets: ["latin"] });
 
@@ -21,6 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>🍹</svg>"
+        />
+      </head>
       <body className={clsx(fraunces.className, "text-base font-light")}>
         <Providers>{children}</Providers>
       </body>
