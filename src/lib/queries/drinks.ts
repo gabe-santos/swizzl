@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 export async function getDrinks(query: string) {
   const res = await fetch(
-    `https://thecocktaildb.com/api/json/v1/1/search.php?s=${query}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/search.php?s=${query}`,
   );
 
   if (!res.ok) {
@@ -17,7 +17,7 @@ export async function getDrinks(query: string) {
 
 export async function getDrinkById(id: string): Promise<DrinkData> {
   const res = await fetch(
-    `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/lookup.php?i=${id}`,
   );
 
   if (!res.ok) {
@@ -29,7 +29,7 @@ export async function getDrinkById(id: string): Promise<DrinkData> {
 }
 
 export async function getRandomDrink() {
-  const res = await fetch("https://thecocktaildb.com/api/json/v1/1/random.php");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/random.php`);
   if (!res.ok) {
     throw new Error("failed to fetch data");
   }
