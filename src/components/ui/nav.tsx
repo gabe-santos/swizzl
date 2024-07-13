@@ -16,9 +16,15 @@ const menuItems = [
   { title: "Home", route: "/" },
   { title: "Sign in / Sign up", route: "/signin" },
   { title: "Favorites", route: "/favorites" },
+  { title: "About", route: "/about" },
+  { title: "Contact", route: "/contact" },
 ];
 
-export default async function Nav({ children }: { children: React.ReactNode }) {
+export default async function Nav({
+  children,
+}: {
+  children?: React.ReactNode;
+}) {
   const user = await getUser();
 
   return (
