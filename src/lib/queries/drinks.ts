@@ -1,7 +1,7 @@
 import { DrinkData } from "@/types/drink";
 import { redirect } from "next/navigation";
 
-export async function getDrinks(query: string): Promise<DrinkData[]> {
+export async function getDrinksByQuery(query: string): Promise<DrinkData[]> {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/search.php?s=${query}`,
   );
@@ -42,7 +42,9 @@ export async function getDrinksByIngredient(
   return drinks;
 }
 
-export async function getMultipleDrinksById(ids: string[]) {
+export async function getMultipleDrinksById(
+  ids: string[],
+): Promise<DrinkData[]> {
   const drinks: DrinkData[] = [];
 
   for (const id of ids) {

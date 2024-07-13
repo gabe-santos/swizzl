@@ -1,6 +1,7 @@
 export type DrinkData = {
   idDrink: string;
   strDrink: string;
+  strCategory: string;
   strInstructions: string;
   strTags: null | string;
   strDrinkThumb: string;
