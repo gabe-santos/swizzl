@@ -77,5 +77,5 @@ export async function getRandomDrink() {
   const data = await res.json();
   const drink = data.drinks[0];
 
-  redirect(`/drink/${drink.idDrink}`);
+  redirect(`/drinks/${drink.idDrink}`);
 }
