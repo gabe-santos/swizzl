@@ -3,6 +3,7 @@ import { Fraunces } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import clsx from "clsx";
+import Footer from "@/components/ui/footer";
 
 const fraunces = Fraunces({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
       </head>
       <body className={clsx(fraunces.className, "text-base font-light")}>
         <Providers>{children}</Providers>
+        <Footer />
       </body>
     </html>
   );
